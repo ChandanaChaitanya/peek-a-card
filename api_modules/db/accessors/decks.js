@@ -28,8 +28,8 @@ function getAllDecks(){
 function getByDeckName(deckName) {
     return Deck.findOne({deckName : deckName}, projection)
     .populate('category')
-    .exec((err, deck) => {
-        if (err) {
+    .then((deck) => {
+        if (!deck) {
             utility.returnError("No valid entry found for the deck name provided!");  
         }      
         return deck;
