@@ -178,9 +178,34 @@ npm start
     ]
     ```
 
-3. To view the cards of  particular deck, - THROWS ERROR, TO BE FIXED 
+3. To view the cards of  particular deck, 
 
     GET request to `/decks/:deckName`
+
+    Request: (/decks/Opposites)
+
+    Response Body:
+
+    ```json
+    {
+        "_id": "5b0defef40be003e74beefce",
+        "deckDesc": "Few basic opposites",
+        "cards": {
+            "Happy": "Sad",
+            "Big": "Small",
+            "Thin": "Thick"
+        },
+        "deckName": "Opposites",
+        "category": {
+            "lastModifiedDate": "2018-04-03T01:40:04.998Z",
+            "_id": "5ac2db7452c0c52dd042a986",
+            "categoryImage": {},
+            "categoryName": "English",
+            "categoryDesc": "All things english",
+            "__v": 0
+        }
+    }
+    ```
 
 4. To retrieve all decks by category,
 
