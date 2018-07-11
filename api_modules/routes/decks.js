@@ -11,7 +11,7 @@ const Category = require('../db/models/category');
 //URI : /decks/
 //get all decks
 /**
- * retuns all the decks along with their category _ids
+ * retuns all the decks along with their category details
  */
 router.get('/', (req, res, next) => {
     deckCommon.getAllDecks()
@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
 
 //HTTP method : GET
 //URI : /decks/:deckName
-//get all the cards by deckName - TO BE FIXED
+//get all the cards by deckName
 router.get('/:deckName', (req, res, next) => {
     let deck = req.params.deckName;
     deckCommon.getDeckByDeckName(deck)
@@ -59,6 +59,24 @@ router.post('/save/:deckName', (req, res, next) => {
         console.log(`Error saving deck to database. Error info is : ${error.stack}`);
         utility.errorResponse(res, error, "Error while inserting deck", 500);
     });  
+});
+
+//HTTP method : DELETE
+//URI : /decks/delete/:deckName
+//delete a deck
+router.delete('/delete/:deckName', (req, res, next) => {
+    let delDeck = req.params.deckName;
+    deckCommon
+    .deleteDeck(delDeck)
+    .then(result => {
+        res.status(200).json({
+            message : "Entry successfully deleted!",
+            deck : result
+        }).end();
+    }).catch(error => {
+        console.log(`Error deleting deck : ${delDeck}. Error info is : ${error.stack}`);
+        utility.errorResponse(res, error, "Error deleting deck", 500);
+    });
 });
 
 module.exports = router;
