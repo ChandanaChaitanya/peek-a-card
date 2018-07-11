@@ -135,7 +135,7 @@ npm start
     {
         "deckName": "English",
         "deckDesc" : "Few basic ones",
-        "category": ObjectId("5ac2db7452c0c52dd042a986")
+        "category": ObjectId("5ac2db7452c0c52dd042a986"),
         "cards": {
     		"Happy" : "Sad",
     		"Big" : "Small",
@@ -233,7 +233,29 @@ npm start
 
 6. To delete a deck,
 
-    DELETE request to `/decks/:deckName`
+    DELETE request to `/decks/delete/:deckName`
+
+    URI: (/decks/delete/Opposites)
+
+    Response:
+
+    ```json
+    {
+        "message": "Entry successfully deleted!",
+        "deck": {
+            "_id": "5b0defef40be003e74beefce",
+            "deckDesc": "Few basic opposites",
+            "cards": {
+                "Happy": "Sad",
+                "Big": "Small",
+                "Thin": "Thick"
+            },
+            "deckName": "Opposites",
+            "__v" : 0,
+            "category": "5ac2db7452c0c52dd042a986"
+        }
+    }
+    ```
 
 **Note**
 
