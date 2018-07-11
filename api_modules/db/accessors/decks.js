@@ -16,6 +16,7 @@ const selectProjection = {
 function getAllDecks(){
     return Deck.find({}, projection)
     .sort({ deckName : "ascending" })
+    .populate('category')
     .then(decks => {
         if(decks.length > 0) {
             return decks;
