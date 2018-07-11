@@ -38,7 +38,7 @@ function getByDeckName(deckName) {
 }
 
 function saveDeck(data, deckName, catName) {
-    return Deck.findOne({ deckName : deckName })
+    return Deck.findOne({ deckName : deckName }, projection)
     .then( dbDeck => {
         if( !dbDeck ) {
             return Deck.create(data);
@@ -56,8 +56,21 @@ function saveDeck(data, deckName, catName) {
     }) 
 }
 
+function removeDeck(deleteDeck) {
+    return Deck
+    .findOneAndRemove({deckName : deleteDeck}, projection)
+    .then( deletedObj => {  
+        if (deletedObj != null) {
+            return deletedObj;
+        } else {
+            return "No such deck present!";
+        }            
+    });
+}
+
 module.exports = {
     getAllDecks,
     getByDeckName,
-    saveDeck
+    saveDeck,
+    removeDeck
 };
