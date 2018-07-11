@@ -135,7 +135,7 @@ npm start
     {
         "deckName": "English",
         "deckDesc" : "Few basic ones",
-        "category": ObjectId("5ac2db7452c0c52dd042a986")
+        "category": ObjectId("5ac2db7452c0c52dd042a986"),
         "cards": {
     		"Happy" : "Sad",
     		"Big" : "Small",
@@ -155,25 +155,41 @@ npm start
     [
         {
             "_id": "5b0defef40be003e74beefce",
-            "deckDesc": "Few basic ones",
+            "deckDesc": "Few basic opposites",
             "cards": {
                 "Happy": "Sad",
                 "Big": "Small",
                 "Thin": "Thick"
             },
             "deckName": "Opp0",
-            "category": "5ac2db7452c0c52dd042a986"
+            "category": {
+                "lastModifiedDate": "2018-04-03T01:40:04.998Z",
+                "_id": "5ac2db7452c0c52dd042a986",
+                "categoryImage": {},
+                "categoryName": "English",
+                "categoryDesc": "All things english",
+                "__v": 0
+            }
         },
         {
             "_id": "5b0dfc9357b220160c6396cb",
-            "deckDesc": "Few basic ones",
+            "deckDesc": "IELTS General realted stuff",
             "cards": {
-                "Happy": "Sad",
-                "Big": "Small",
-                "Thin": "Thick"
+                "Reading": "questions based on a given passage",
+                "Writing": "Argument or opinionated essay",
+                "Speaking": "Speak about a topic and then answer questions based on the spoken topic",
+                "Listening": "Includes choose the right answer, fill in the blanks, match the following, understanding a map from an audio clip"
             },
-            "deckName": "Opposite",
+            "deckName": "IELTS General",
             "category": "5b0dfc1772cad70ea8acbe4f"
+            "category": {
+                "lastModifiedDate": "2018-05-03T01:40:04.998Z",
+                "category": "5b0dfc1772cad70ea8acbe4f",
+                "categoryImage": {},
+                "categoryName": "IELTS",
+                "categoryDesc": "All things IELTS",
+                "__v": 0
+            }
         }
     ]
     ```
@@ -217,7 +233,29 @@ npm start
 
 6. To delete a deck,
 
-    DELETE request to `/decks/:deckName`
+    DELETE request to `/decks/delete/:deckName`
+
+    URI: (/decks/delete/Opposites)
+
+    Response:
+
+    ```json
+    {
+        "message": "Entry successfully deleted!",
+        "deck": {
+            "_id": "5b0defef40be003e74beefce",
+            "deckDesc": "Few basic opposites",
+            "cards": {
+                "Happy": "Sad",
+                "Big": "Small",
+                "Thin": "Thick"
+            },
+            "deckName": "Opposites",
+            "__v" : 0,
+            "category": "5ac2db7452c0c52dd042a986"
+        }
+    }
+    ```
 
 **Note**
 

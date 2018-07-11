@@ -19,8 +19,15 @@ function saveDeck(data, deckName, catName) {
     })
 }
 
+function deleteDeck(deleteDeck) {
+    return db.removeDeck(deleteDeck).then(result => {
+        return result;
+    })
+}
+
 module.exports = {
     getAllDecks,
     getDeckByDeckName,
-    saveDeck
+    saveDeck,
+    deleteDeck
 };
